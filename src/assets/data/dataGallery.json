@@ -19,7 +19,7 @@
       "date": "08/12/2025",
       "title": "Company Visit",
       "description": "Melalui program company visit, anggota HIMTI mendapatkan wawasan langsung tentang budaya kerja, inovasi, dan teknologi terkini di perusahaan terkemuka.",
-      "image": "../src/assets/img/ComVis-Indosat.webp"
+      "image": "/img/ComVis-Indosat.webp"
     },
     {
       "id": 4,
