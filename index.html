@@ -1,0 +1,89 @@
+<!doctype html>
+<html class="scroll-smooth" lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HimTi Mercubuana</title>
+    <!-- Title and Meta Description for SEO -->
+    <title>HimTi Mercubuana | Himpunan Mahasiswa Teknik Informatika</title>
+    <meta
+      name="description"
+      content="Selamat datang di HimTi Universitas Mercubuana! Temukan kegiatan, acara, dan komunitas bagi mahasiswa Teknik Informatika di sini."
+    />
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta
+      property="og:title"
+      content="HimTi Mercubuana | Himpunan Mahasiswa Teknik Informatika"
+    />
+    <meta
+      property="og:description"
+      content="Selamat datang di HimTi Universitas Mercubuana! Temukan kegiatan, acara, dan komunitas bagi mahasiswa Teknik Informatika di sini."
+    />
+    <meta property="og:image" content="src/assets/img/logo-himti.webp" />
+    <meta property="og:url" content="https://himtimercubuana.org/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="HimTi" />
+    <meta
+      name="twitter:title"
+      content="HimTi Mercubuana | Himpunan Mahasiswa Teknik Informatika"
+    />
+    <meta
+      name="twitter:description"
+      content="Selamat datang di HimTi Universitas Mercubuana! Temukan kegiatan, acara, dan komunitas bagi mahasiswa Teknik Informatika di sini."
+    />
+    <meta name="twitter:image" content="src/assets/img/logo-himti.webp" />
+
+    <!-- Favicon and Preload for Faster Loading -->
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="src/assets/img/logo-himti.webp"
+      title="Logo HimTi"
+    />
+    <link rel="preload" as="image" href="src/assets/img/logo-himti.webp" />
+
+    <link rel="icon" type="image" href="src/assets/img/logo-himti.webp" />
+
+    <!-- Icons Form Contact Section-->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <!-- Aos Animation -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+      // This code should be added to <head>.
+      // It's used to prevent page load glitches.
+      const html = document.querySelector('html')
+      const isLightOrAuto =
+        localStorage.getItem('hs_theme') === 'light' ||
+        (localStorage.getItem('hs_theme') === 'auto' &&
+          !window.matchMedia('(prefers-color-scheme: dark)').matches)
+      const isDarkOrAuto =
+        localStorage.getItem('hs_theme') === 'dark' ||
+        (localStorage.getItem('hs_theme') === 'auto' &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches)
+
+      if (isLightOrAuto && html.classList.contains('dark'))
+        html.classList.remove('dark')
+      else if (isDarkOrAuto && html.classList.contains('light'))
+        html.classList.remove('light')
+      else if (isDarkOrAuto && !html.classList.contains('dark'))
+        html.classList.add('dark')
+      else if (isLightOrAuto && !html.classList.contains('light'))
+        html.classList.add('light')
+    </script>
+  </head>
+  <body>
+    <div id="app" class="bg-main-1 font-poppins dark:bg-main-1"></div>
+    <script type="module" src="/src/main.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init()
+    </script>
+  </body>
+</html>
