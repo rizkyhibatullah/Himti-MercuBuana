@@ -60,7 +60,7 @@ export default {
         <h1
           class="text-sm font-semibold text-white sm:text-base md:text-lg lg:text-3xl"
         >
-          Tahun 2025 - 2026
+          Periode Tahun 2025 - 2026
         </h1>
         
         <div class="mx-auto mb-6 mt-5 h-1 w-56 bg-main-4 md:mx-0"></div>

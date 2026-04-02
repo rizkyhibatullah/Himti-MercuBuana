@@ -1,7 +1,7 @@
 <script setup>
 import { onMounted, nextTick } from 'vue'
 
-import galleryData from '../assets/data/dataGallery.json'
+import galleryData from '../assets/data/dataGallery.js'
 import teamData from '../assets/data/dataTeam.json'
 import AboutSection from '../components/AboutPageSection.vue'
 import FooterSection from '../components/FooterSection.vue'

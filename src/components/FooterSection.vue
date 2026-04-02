@@ -11,41 +11,41 @@ const navItems = computed(() => {
   const pageSpecificItems = {
     Home: [
       { name: 'Home', path: '#' },
-      { name: 'About', path: '#about' },
-      { name: 'Program', path: '#program' },
-      { name: 'Members', path: '#team' },
+      { name: 'About', path: '/about' },
+      { name: 'Program', path: '/program' },
+      { name: 'Members', path: '/team' },
       { name: 'Contact us', path: '#contact' },
     ],
     // --- TAMBAHAN UNTUK HALAMAN PROGRAM ---
     // Agar menu muncul lengkap saat di halaman /program
     Program: [
       { name: 'Home', path: '/' },
-      { name: 'About', path: '/#about' }, // Balik ke Home -> Scroll About
+      { name: 'About', path: '/about' }, // Balik ke Home -> Scroll About
       { name: 'Program', path: '#' }, // Stay (Top)
-      { name: 'Members', path: '/#team' }, // Balik ke Home -> Scroll Team
+      { name: 'Members', path: '/team' }, // Balik ke Home -> Scroll Team
       { name: 'Contact us', path: '/#contact' }, // Balik ke Home -> Scroll Contact
     ],
     Blog: [
       { name: 'Home', path: '/' },
-      { name: 'About', path: '#about' },
-      { name: 'Program', path: '#program' },
+      { name: 'About', path: '/about' },
+      { name: 'Program', path: '/program' },
       { name: 'Members', path: '#team' },
-      { name: 'Contact us', path: '#contact' },
+      { name: 'Contact us', path: '/#contact' },
     ],
     About: [
       { name: 'Home', path: '/' },
-      { name: 'About', path: '/about' },
-      { name: 'Program', path: '#program' },
-      { name: 'Members', path: '#team' },
-      { name: 'Contact us', path: '#contact' },
+      { name: 'About', path: '#' },
+      { name: 'Program', path: '/program' },
+      { name: 'Members', path: '/team' },
+      { name: 'Contact us', path: '/#contact' },
     ],
     // DEFAULT FALLBACK (Menu Lengkap)
     // Jika halaman tidak dikenali, tampilkan menu standar ini
     Default: [
       { name: 'Home', path: '/' },
-      { name: 'About', path: '/#about' },
+      { name: 'About', path: '/about' },
       { name: 'Program', path: '/program' },
-      { name: 'Members', path: '/#team' },
+      { name: 'Members', path: '/team' },
       { name: 'Contact us', path: '/#contact' },
     ],
   }
