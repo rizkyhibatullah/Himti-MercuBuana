@@ -6,7 +6,6 @@ import { Icon } from '@iconify/vue/dist/iconify.js'
 const route = useRoute()
 const router = useRouter()
 
-// LOGIKA NAVIGASI AGAR BISA SCROLL DI HOME & PINDAH DI PAGE LAIN
 const navItems = computed(() => {
   const pageSpecificItems = {
     Home: [
@@ -16,14 +15,12 @@ const navItems = computed(() => {
       { name: 'Members', path: '/team' },
       { name: 'Contact us', path: '#contact' },
     ],
-    // --- TAMBAHAN UNTUK HALAMAN PROGRAM ---
-    // Agar menu muncul lengkap saat di halaman /program
     Program: [
       { name: 'Home', path: '/' },
-      { name: 'About', path: '/about' }, // Balik ke Home -> Scroll About
-      { name: 'Program', path: '#' }, // Stay (Top)
-      { name: 'Members', path: '/team' }, // Balik ke Home -> Scroll Team
-      { name: 'Contact us', path: '/#contact' }, // Balik ke Home -> Scroll Contact
+      { name: 'About', path: '/about' },
+      { name: 'Program', path: '#' },
+      { name: 'Members', path: '/team' },
+      { name: 'Contact us', path: '/#contact' },
     ],
     Blog: [
       { name: 'Home', path: '/' },
@@ -39,8 +36,6 @@ const navItems = computed(() => {
       { name: 'Members', path: '/team' },
       { name: 'Contact us', path: '/#contact' },
     ],
-    // DEFAULT FALLBACK (Menu Lengkap)
-    // Jika halaman tidak dikenali, tampilkan menu standar ini
     Default: [
       { name: 'Home', path: '/' },
       { name: 'About', path: '/about' },
@@ -49,10 +44,39 @@ const navItems = computed(() => {
       { name: 'Contact us', path: '/#contact' },
     ],
   }
-
-  // Ambil menu sesuai nama route, atau pakai Default jika tidak ada
   return pageSpecificItems[route.name] || pageSpecificItems['Default']
 })
+
+const handleNav = (path) => {
+  if (path.startsWith('#')) {
+    if (route.path !== '/') {
+      router.push('/').then(() => {
+        setTimeout(() => {
+          const el = document.querySelector(path)
+          if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }, 300)
+      })
+    } else {
+      const el = document.querySelector(path)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  } else if (path.startsWith('/#')) {
+    const hash = path.slice(1)
+    if (route.path !== '/') {
+      router.push('/').then(() => {
+        setTimeout(() => {
+          const el = document.querySelector(hash)
+          if (el) el.scrollIntoView({ behavior: 'smooth' })
+        }, 300)
+      })
+    } else {
+      const el = document.querySelector(hash)
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  } else {
+    router.push({ path, hash: '' })
+  }
+}
 </script>
 
 <template>
@@ -64,6 +88,7 @@ const navItems = computed(() => {
         <div v-for="(item, index) in navItems" :key="index" class="px-5 py-2">
           <a
             :href="item.path"
+            @click.prevent="handleNav(item.path)"
             class="text-base leading-6 text-gray-500 transition-colors hover:text-main-4"
           >
             {{ item.name }}

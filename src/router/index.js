@@ -103,7 +103,7 @@ const router = createRouter({
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition
+      return { ...savedPosition, behavior: 'smooth' }
     }
     if (to.path === from.path) {
       return { element: to.hash, behavior: 'smooth' }
@@ -111,7 +111,7 @@ const router = createRouter({
     if (to.hash) {
       return { el: to.hash, behavior: 'smooth' }
     }
-    return { top: 0 }
+    return { top: 0, behavior: 'smooth' }
   },
 })
 
