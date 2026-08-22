@@ -5,10 +5,13 @@ const Home = () => import('../pages/Home.vue')
 const Blog = () => import('../pages/Blog.vue')
 const Event = () => import('../pages/EventPages.vue')
 const EventDetail = () => import('../pages/EventDetail.vue')
-// Tambahkan import halaman Program
 const ProgramPage = () => import('../pages/ProgramPages.vue')
 const FktiPages = () => import('../pages/FktiPages.vue')
 const KelascorePages = () => import('../pages/KelascorePages.vue')
+
+// TAMBAHKAN IMPORT COMPANY VISIT DISINI
+const CompanyVisitPages = () => import('../pages/CompanyVisitPages.vue')
+
 const Team = () => import('../pages/MemberPages.vue')
 const SeminarITPages = () => import('../pages/SeminarITPages.vue')
 const PostDetail = () => import('../pages/PostDetail.vue')
@@ -17,43 +20,32 @@ const ComingSoon = () => import('../components/state/ComingSoon.vue')
 const AboutPages = () => import('../pages/AboutPages.vue')
 
 const routes = [
-  // Halaman Home
   {
     path: '/',
     name: 'Home',
     component: Home,
   },
-
-  // Halaman About
   {
     path: '/about',
     name: 'About',
     component: AboutPages,
   },
-
-  // Halaman Blog
   {
     path: '/blog',
     name: 'Blog',
     component: Blog,
   },
-
-  // Detail Post (dengan validasi ID berupa angka)
   {
     path: '/post/:id(\\d+)',
     name: 'PostDetail',
     component: PostDetail,
     props: true,
   },
-
-  // Halaman Program (List Semua Program)
   {
     path: '/program',
     name: 'Program',
-    component: ProgramPage, // Pastikan file ProgramPages.vue sudah dibuat
+    component: ProgramPage,
   },
-
-  // Halaman Event
   {
     path: '/event',
     name: 'Event',
@@ -71,35 +63,34 @@ const routes = [
     component: EventDetail,
     props: true,
   },
-  // Halaman Team
   {
     path: '/team',
     name: 'Team',
     component: Team,
   },
-
-  // Halaman FKTI
   {
     path: '/fkti',
     name: 'FktiPages',
     component: ComingSoon,
   },
-
-  // Halaman Kelascore (Detail Kelas Core)
   {
-    path: '/program/kelas-core', // Saya ubah sedikit path-nya agar rapi, atau bisa tetap '/kelascore'
+    path: '/program/kelas-core',
     name: 'KelascorePages',
-    component: KelascorePages, // Menggunakan component asli, bukan ComingSoon
+    component: KelascorePages,
   },
 
-  // Halaman Seminar IT
+  // ROUTE BARU UNTUK COMPANY VISIT
+  {
+    path: '/program/company-visit',
+    name: 'CompanyVisitPages',
+    component: CompanyVisitPages,
+  },
+
   {
     path: '/seminarit',
     name: 'SeminarITPages',
     component: ComingSoon,
   },
-
-  // Halaman 404 Not Found
   {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
@@ -108,13 +99,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  // Gunakan HTML5 history mode
   history: createWebHistory(),
-
-  // Daftar routes
   routes,
-
-  // Gulir otomatis ke atas saat berpindah page
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       return savedPosition
@@ -129,7 +115,6 @@ const router = createRouter({
   },
 })
 
-// Navigation Guards
 router.beforeEach((to, from, next) => {
   document.title = `${to.name} - Himti Mercu Buana` || 'Himti Mercu Buana'
   next()

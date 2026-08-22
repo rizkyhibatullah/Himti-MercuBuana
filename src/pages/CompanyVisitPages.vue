@@ -2,59 +2,86 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import FooterSection from '../components/FooterSection.vue'
 
-// --- DATA TIMELINE ---
+// --- DATA KONFIGURASI WAKTU ---
+const REG_CLOSE_DATE = new Date('2026-04-14T23:59:59').getTime() // Selasa
+const DEPARTURE_DATE = new Date('2026-04-16T07:00:00').getTime() // Kamis
+
+// --- DATA TIMELINE (100% Sesuai Proposal) ---
 const timelineItems = ref([
   {
-    date: '01 Feb 2025 - Pendaftaran',
-    title: 'Pendaftaran',
-    desc: 'Mahasiswa dapat melakukan pendaftaran program Kelas Core melalui portal resmi.',
+    date: '16 April 2026 (07.00 - 07.30)',
+    title: 'Kumpul & Persiapan',
+    desc: 'Berkumpul di Masjid Universitas Mercu Buana.',
   },
   {
-    date: '10 Feb 2025 - Penempatan Kelas',
-    title: 'Penempatan Kelas',
-    desc: 'Tes minat dan kompetensi dasar digunakan untuk menentukan peserta masuk jalur UI/UX, Frontend, Backend, atau Data Mining.',
+    date: '16 April 2026 (07.30 - 08.00)',
+    title: 'Absensi',
+    desc: 'Absensi peserta dan panitia.',
   },
   {
-    date: '25 Feb 2025 - Kelas UI/UX',
-    title: 'Kelas UI/UX',
-    desc: 'Pengenalan design thinking, user research, wireframing, dan dasar visual design dan lain-lain.',
+    date: '16 April 2026 (08.00 - 09.00)',
+    title: 'Keberangkatan',
+    desc: 'Berangkat di Perjalanan menuju lokasi.',
   },
   {
-    date: '01 Mar 2025 - Kelas Frontend Developer',
-    title: 'Kelas Frontend',
-    desc: 'Pembelajaran HTML, CSS, JavaScript, responsive layout, dan dasar framework modern.',
+    date: '16 April 2026 (09.00 - 09.15)',
+    title: 'Tiba di Lokasi',
+    desc: 'Sampai ke Tempat Tujuan (Kantor Blu By BCA Digital).',
   },
   {
-    date: '10 Mar 2025 - Kelas Backend Developer',
-    title: 'Kelas Backend',
-    desc: 'Pengenalan struktur server, pengelolaan database, API, dan autentikasi dasar.',
+    date: '16 April 2026 (09.15 - 12.00)',
+    title: 'Acara Utama',
+    desc: 'Acara dimulai (Pemaparan materi dan kunjungan industri).',
   },
   {
-    date: '15 Mar 2025 - Kelas Data Mining',
-    title: 'Kelas Data Mining',
-    desc: 'Dasar data cleaning, exploratory data analysis, hingga pengenalan model machine learning.',
+    date: '16 April 2026 (12.00 - 12.15)',
+    title: 'Penutupan Acara',
+    desc: 'Acara Selesai.',
   },
   {
-    date: '30 Apr 2025 - Final Project',
-    title: 'Final Project',
-    desc: 'Peserta mengembangkan proyek akhir berbasis studi kasus nyata dari mentor.',
+    date: '16 April 2026 (12.10 - 12.30)',
+    title: 'Persiapan Pulang',
+    desc: 'Persiapan kembali ke Mercu Buana.',
+  },
+  {
+    date: '16 April 2026 (13.00 - 13.30)',
+    title: 'Tiba di Kampus',
+    desc: 'Sampai ke Universitas Mercu Buana.',
   },
 ])
 
-// --- LOGIC COUNTDOWN ---
-const targetDate = new Date('2025-02-01T00:00:00').getTime()
+// --- LOGIC COUNTDOWN DINAMIS ---
 const days = ref(0)
 const hours = ref(0)
 const minutes = ref(0)
 const seconds = ref(0)
+const countdownLabel = ref('')
+const isRegistrationOpen = ref(true)
 let timerInterval = null
 
 const updateCountdown = () => {
   const now = new Date().getTime()
+
+  let targetDate
+  if (now < REG_CLOSE_DATE) {
+    targetDate = REG_CLOSE_DATE
+    countdownLabel.value = 'Pendaftaran Ditutup Dalam'
+    isRegistrationOpen.value = true
+  } else {
+    targetDate = DEPARTURE_DATE
+    countdownLabel.value = 'Waktu Menuju Keberangkatan'
+    isRegistrationOpen.value = false
+  }
+
   const distance = targetDate - now
 
   if (distance < 0) {
-    clearInterval(timerInterval)
+    days.value = 0
+    hours.value = 0
+    minutes.value = 0
+    seconds.value = 0
+    if (now > DEPARTURE_DATE)
+      countdownLabel.value = 'Acara Sedang Berlangsung / Selesai'
     return
   }
 
@@ -81,22 +108,27 @@ onUnmounted(() => {
     class="flex min-h-screen flex-col justify-between overflow-x-hidden bg-[#1e002e] font-sans text-white"
   >
     <div class="flex-grow">
-
-
       <div class="container relative z-0 mx-auto px-4 pb-20 pt-40 text-center">
-        <h1 class="mb-6 text-4xl font-bold text-white md:text-5xl">
-          Kelas Core
+        <h1 class="mb-4 text-4xl font-bold text-white md:text-5xl">
+          Company Visit ke blu by BCA Digital
         </h1>
+
+        <p class="mb-8 text-lg font-medium text-purple-400">
+          Waktu Keberangkatan: Kamis, 16 April 2026 | 07.00 WIB
+        </p>
+
         <p class="mx-auto mb-12 max-w-3xl px-4 leading-relaxed text-gray-300">
-          Program Kelas Core adalah pembelajaran terstruktur yang meningkatkan
-          kompetensi mahasiswa melalui empat fokus utama: UI/UX Design, Frontend
-          Development, Backend Development, dan Data Mining, memberikan
-          pemahaman menyeluruh tentang pembuatan produk digital dari perancangan
-          hingga implementasi berbasis data.
+          Mengusung tema
+          <strong
+            >"Inovasi Artificial Intelligence dan Strategi Cyber Security dalam
+            Pengembangan Sistem Perbankan Digital"</strong
+          >, kegiatan ini bertujuan memberikan wawasan langsung mengenai
+          penerapan teknologi AI dan keamanan siber dalam layanan digital
+          banking modern.
         </p>
 
         <h2 class="mb-8 text-2xl font-semibold text-white">
-          Registrasi akan dibuka
+          {{ countdownLabel }}
         </h2>
 
         <div class="mb-10 flex flex-wrap justify-center gap-4">
@@ -126,15 +158,26 @@ onUnmounted(() => {
           </div>
         </div>
 
-        <span
-          class="inline-block"
-        >
-          <button
-            disabled
-            class="cursor-not-allowed rounded-full border border-gray-500 bg-gray-600 px-10 py-3 font-bold text-gray-300 shadow-none transition-all"
+        <div v-if="isRegistrationOpen">
+          <a
+            href="#"
+            target="_blank"
+            class="inline-block transition-transform hover:-translate-y-1"
           >
-            Daftar Disini          </button>
-        </span>
+            <button
+              class="rounded-full border border-purple-400 bg-[#5b21b6] px-10 py-3 font-bold text-white shadow-[0_0_15px_rgba(139,92,246,0.5)] transition-all hover:bg-[#4c1d95]"
+            >
+              Daftar Disini
+            </button>
+          </a>
+        </div>
+        <div v-else>
+          <span
+            class="inline-block rounded-full border border-red-500/50 bg-red-500/20 px-8 py-3 font-bold text-red-400"
+          >
+            Pendaftaran Sudah Ditutup
+          </span>
+        </div>
 
         <div class="mt-16 animate-bounce opacity-70">
           <svg
@@ -157,7 +200,7 @@ onUnmounted(() => {
       <div class="relative overflow-hidden rounded-t-[3rem] bg-[#3c1e70] py-20">
         <div class="container mx-auto px-4">
           <h2 class="mb-4 text-center text-3xl font-bold md:text-4xl">
-            Timeline Kelas Core
+            Rundown Kegiatan
           </h2>
           <div
             class="mx-auto mb-16 h-1 w-24 rounded-full bg-purple-400/50"
@@ -187,8 +230,11 @@ onUnmounted(() => {
                 ></div>
 
                 <div class="hidden pl-12 text-left md:block md:w-1/2">
+                  <h3 class="mb-1 text-lg font-bold text-white">
+                    {{ item.title }}
+                  </h3>
                   <p
-                    class="text-sm font-medium leading-relaxed text-white md:text-base"
+                    class="text-sm font-medium leading-relaxed text-gray-200 md:text-base"
                   >
                     {{ item.desc }}
                   </p>
@@ -200,6 +246,9 @@ onUnmounted(() => {
                   >
                     {{ item.date }}
                   </div>
+                  <h3 class="mb-1 text-lg font-bold text-white">
+                    {{ item.title }}
+                  </h3>
                   <p class="mt-1 text-sm leading-relaxed text-gray-200">
                     {{ item.desc }}
                   </p>
@@ -211,12 +260,11 @@ onUnmounted(() => {
       </div>
     </div>
     <FooterSection />
-  </div> 
+  </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
 div {
   font-family: 'Poppins', sans-serif;
 }

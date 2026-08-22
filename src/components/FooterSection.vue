@@ -76,7 +76,7 @@ const navItems = computed(() => {
           <span class="sr-only">Facebook</span>
           <Icon icon="simple-icons:facebook" width="23" height="23" />
         </a>
-        <a href="#" class="text-gray-400 transition-colors hover:text-main-4">
+        <a href="https://www.instagram.com/himti_mercubuana/" class="text-gray-400 transition-colors hover:text-main-4">
           <span class="sr-only">Instagram</span>
           <Icon icon="simple-icons:instagram" width="23" height="23" />
         </a>
@@ -88,7 +88,7 @@ const navItems = computed(() => {
           <span class="sr-only">GitHub</span>
           <Icon icon="simple-icons:github" width="23" height="23" />
         </a>
-        <a href="#" class="text-gray-400 transition-colors hover:text-main-4">
+        <a href="https://www.linkedin.com/company/himti/" class="text-gray-400 transition-colors hover:text-main-4">
           <span class="sr-only">Linkedin</span>
           <Icon icon="simple-icons:linkedin" width="23" height="23" />
         </a>

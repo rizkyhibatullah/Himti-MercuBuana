@@ -1,20 +1,22 @@
 import comVisImage from "../img/ComVis-Indosat.webp";
+import lkmmImage from "../img/LKMM.jpeg";
+import pengmasImage from "../img/Pengmas.jpeg";
 
 const dataGallery = {
   gallery: [
     {
       id: 1,
       date: "10/09/2025",
-      title: "Gathering & Outing",
+      title: "LKMM",
       description: "Kegiatan gathering, outing, dan kegiatan memperkuat solidaritas, hubungan yang hangat, serta lingkungan organisasi yang sportif.",
-      image: "#"
+      image: lkmmImage
     },
     {
       id: 2,
       date: "11/10/2025",
       title: "Pengabdian Masyarakat",
       description: "HIMTI berbagi pengetahuan tentang keamanan siber dan teknologi digital kepada masyarakat, membangun kesadaran akan pentingnya dunia digital yang aman dan produktif.",
-      image: "#"
+      image: pengmasImage
     },
     {
       id: 3,
