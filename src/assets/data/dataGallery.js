@@ -1,6 +1,6 @@
 import comVisImage from "../img/ComVis-Indosat.webp";
-import lkmmImage from "../img/LKMM.jpeg";
-import pengmasImage from "../img/Pengmas.jpeg";
+import lkmmImage from "../img/LKMM.webp";
+import pengmasImage from "../img/Pengmas.webp";
 
 const dataGallery = {
   gallery: [

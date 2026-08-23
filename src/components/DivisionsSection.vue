@@ -18,7 +18,7 @@ const availableDivisions = [
     role: 'BPH',
     about:
       'Badan Pengurus Harian (BPH) bertanggung jawab dalam mengoordinasikan, mengarahkan, serta memastikan seluruh kegiatan organisasi berjalan secara efektif dan terstruktur. Divisi ini juga berperan dalam pengambilan keputusan strategis serta menjaga sinergi antar divisi untuk mencapai tujuan organisasi.',
-    image: '/img/Banner/BPH.JPG.jpeg',
+    image: '/img/Banner/BPH.webp',
   },
   {
     id: 'RISTEK',
@@ -27,7 +27,7 @@ const availableDivisions = [
     role: 'Divisi RISTEK',
     about:
       'Divisi Riset dan Teknologi (Ristek) berfokus pada pengembangan pengetahuan, inovasi, dan keterampilan di bidang teknologi. Melalui berbagai program, proyek, dan riset, divisi ini mendorong anggota untuk mengembangkan solusi teknologi yang relevan serta meningkatkan kompetensi teknis di dunia digital.',
-    image: '/img/Banner/Ristek.JPG.jpeg',
+    image: '/img/Banner/Ristek.webp',
   },
   {
     id: 'HUMAS',
@@ -36,7 +36,7 @@ const availableDivisions = [
     role: 'Divisi Humas',
     about:
       'Divisi Hubungan Masyarakat (Humas) berperan dalam membangun serta menjaga komunikasi antara organisasi dengan pihak eksternal. Divisi ini juga bertanggung jawab dalam menjalin kerja sama, memperluas relasi, serta menyampaikan informasi organisasi kepada publik secara profesional.',
-    image: '/img/Banner/HUMAS.JPG.jpeg',
+    image: '/img/Banner/HUMAS.webp',
   },
   {
     id: 'DESMED',
@@ -45,7 +45,7 @@ const availableDivisions = [
     role: 'Divisi DESMED',
     about:
       'Divisi Media Creative bertanggung jawab dalam mengelola identitas visual dan konten kreatif organisasi. Melalui desain, dokumentasi, dan produksi media digital, divisi ini memastikan setiap kegiatan organisasi dapat dikomunikasikan secara menarik, konsisten, dan informatif kepada audiens.',
-    image: '/img/Banner/Desmed.JPG.jpeg',
+    image: '/img/Banner/Desmed.webp',
   },
   {
     id: 'PSDM',
@@ -54,7 +54,7 @@ const availableDivisions = [
     role: 'Divisi PSDM',
     about:
       'Divisi Pengembangan Sumber Daya Manusia (PSDM) berfokus pada pengembangan potensi, karakter, dan kapasitas anggota organisasi. Melalui berbagai program pelatihan, kaderisasi, dan evaluasi, divisi ini bertujuan untuk menciptakan anggota yang kompeten, kolaboratif, dan siap berkontribusi secara optimal.',
-    image: '/img/Banner/PSDM.JPG.jpeg',
+    image: '/img/Banner/PSDM.webp',
   },
 ]
 
